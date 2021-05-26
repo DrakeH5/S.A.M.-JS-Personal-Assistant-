@@ -1,0 +1,123 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+
+<body text="white">
+
+  <h2>
+  <script>
+    function startTime() {
+      var today = new Date();
+      var h = today.getHours();
+      if (today.getHours() > 12) {
+    var h = h - 12
+      }
+      var m = today.getMinutes();
+      var s = today.getSeconds();
+      m = checkTime(m);
+      s = checkTime(s);
+      document.getElementById('txt').innerHTML =
+      h + ":" + m + ":" + s;
+      var t = setTimeout(startTime, 500);
+    }
+    function checkTime(i) {
+      if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+      return i;
+    }
+    </script>
+    <body onload="startTime()">
+
+    <div class="time" id="txt"></div>
+    <p id="dayofweek"></p>
+    <p id="date"></p>
+      </h2>
+
+
+<script type='text/javascript' src='https://darksky.net/widget/default/38.4739,-82.6488/us12/en.js?width=100%&height=350&title=Ashalnd city&textColor=ffffff&bgColor=transparent&transparency=true&skyColor=undefined&fontFamily=Default&customFont=&units=us&htColor=333333&ltColor=C7C7C7&displaySum=yes&displayHeader=yes'></script>
+
+
+<script>
+
+
+
+n =  new Date();
+y = n.getFullYear();
+m = n.getMonth() + 1;
+d = n.getDate();
+document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
+
+
+var h = new Date();
+  var weekday = new Array(7);
+  weekday[0] = "Sunday";
+  weekday[1] = "Monday";
+  weekday[2] = "Tuesday";
+  weekday[3] = "Wednesday";
+  weekday[4] = "Thursday";
+  weekday[5] = "Friday";
+  weekday[6] = "Saturday";
+
+  var i = weekday[h.getDay()];
+  document.getElementById("dayofweek").innerHTML = i;
+
+
+var changeBg = function(num){
+
+  if (num > 18) {
+document.body.style.backgroundImage = "url('cityatnight2.jpg')";
+  }
+  else if (num < 9) {
+    document.body.style.backgroundImage = "url('sunrise3.jpg')";
+  }
+
+  else {
+    document.body.style.backgroundImage = "url('homescreen3.jpg')";
+  }
+
+}
+
+
+
+setInterval(function(){
+  var today2 = new Date();
+  var h2 = today2.getHours(); //edit here. sec -> hour.
+
+  console.log(h2)
+
+  changeBg(h2);
+
+
+},1000) //and edit here. 1000 means 1sec
+
+
+</script>
+
+
+<style>
+
+body {
+
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
+
+#btnGiveCommand {
+  height: 80px;
+  position: relative;
+  top: 750px;
+}
+
+</style>
+
+
+
+</body>
+
+</html>

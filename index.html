@@ -1,0 +1,719 @@
+<html>
+
+
+<body>
+
+<font color="white">
+
+<center>
+<h1>S.A.M.</h1>
+<h3>Simple A.I. Matrix</h3>
+<script>
+function startTime() {
+var today = new Date();
+var h = today.getHours();
+if (today.getHours() > 12) {
+var h = h - 12
+}
+var m = today.getMinutes();
+var s = today.getSeconds();
+m = checkTime(m);
+s = checkTime(s);
+document.getElementById('txt').innerHTML =
+h + ":" + m + ":" + s;
+var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+return i;
+}
+</script>
+<body onload="startTime()">
+<h2>
+<div class="time" id="txt"></div>
+</center>
+</h2>
+
+</center>
+
+  	<div class="content">
+    <button id="btnGiveCommand" src="jarvisbutton3.jpg">
+  		<div class="circle">
+  			<span class="dot no1"></span>
+  			<span class="dot no2"></span>
+  			<span class="dot no3"></span>
+  			<span class="dot no4"></span>
+  			<span class="dot no5"></span>
+  			<span class="dot no6"></span>
+  			<span class="dot no7"></span>
+  			<span class="dot no8"></span>
+  			<span class="dot no9"></span>
+  			<span class="dot no10"></span>
+  			<span class="dot no11"></span>
+  			<span class="dot no12"></span>
+  			<span class="dot no13"></span>
+  			<span class="dot no14"></span>
+  			<span class="dot no15"></span>
+  		</div>
+  	</div>
+  </button>
+
+
+    <span id='message'></span>
+
+
+
+    <audio id="piano">
+
+    <source src="amclassical_beethoven_fur_elise.mp3" type="audio/ogg">
+
+
+    	<audio id="piano2">
+
+    	<source src="amclassical_bon_sonata_in_g_minor_mvt_1.mp3" type="audio/ogg">
+
+
+    		<audio id="mozart">
+
+    		<source src="daily_download_20180102_128.mp3" type="audio/ogg">
+
+
+</fotn>
+  <script>
+
+
+  var x = document.getElementById("reconition");
+var message = document.querySelector('#message');
+var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
+var grammar = '#JSGF V1.0;'
+var recognition = new SpeechRecognition();
+var speechRecognitionList = new SpeechGrammarList();
+speechRecognitionList.addFromString(grammar, 1);
+recognition.grammars = speechRecognitionList;
+recognition.lang = 'en-US';
+recognition.interimResults = false;
+recognition.onresult = function(event) {
+var last = event.results.length - 1;
+var command = event.results[last][0].transcript;
+message.textContent = 'Voice Input: ' + command + '.';
+
+
+
+if (command.toLowerCase() === 'google'){
+    window.location.href = "https://www.google.com/";
+
+}
+
+
+
+else if (command.toLowerCase() === 'music'){
+    window.location.href = "https://www.spotify.com/";
+
+}
+
+
+
+
+else if (command.toLowerCase() === 'tell me a meme'){
+  var msg = new SpeechSynthesisUtterance('go look in the mirror');
+ window.speechSynthesis.speak(msg);
+
+}
+
+
+
+
+
+else if (command.toLowerCase() === 'elon musk'){
+ var msg = new SpeechSynthesisUtterance('elon musk, is a great leading scientist who is commonly known for tesla, space-x, and memes. For more information look up my dolphin is not working memes. ');
+ window.speechSynthesis.speak(msg);
+
+               }
+
+
+else if (command.toLowerCase() === 'email'){
+  window.location.href = "mailto: ? &body=Email sent from S.A.M.";
+  var msg = new SpeechSynthesisUtterance('Opening email now');
+  window.speechSynthesis.speak(msg);
+ }
+
+
+
+
+
+     else if (command.toLowerCase() === 'what is the weather'){
+          window.open('https://www.google.com/search?rlz=1C1SQJL_enUS835US835&ei=RlSNXNfYMomu0gLn8bmIDA&q=weather&oq=weather&gs_l=psy-ab.3..35i39l2j0l6j0i131l2.3779.5055..5475...0.0..0.168.1101.0j7......0....1..gws-wiz.......0i71j0i131i67j0i131i20i263.GDlPThdNt_w', '_blank');
+      }
+
+      else if (command.toLowerCase() === 'sam'){
+             var msg = new SpeechSynthesisUtterance("yes sir");
+             window.speechSynthesis.speak(msg);
+          }
+
+          else if (command.toLowerCase() === 'full screen'){
+                 var msg = new SpeechSynthesisUtterance("adjusting perimeters now");
+                 window.speechSynthesis.speak(msg);
+                 function requestFullScreen(element) {
+// Supports most browsers and their versions.
+var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
+
+if (requestMethod) { // Native full screen.
+requestMethod.call(element);
+} else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
+var wscript = new ActiveXObject("WScript.Shell");
+if (wscript !== null) {
+wscript.SendKeys("{F11}");
+}
+}
+}
+
+var elem = document.body; // Make the body go full screen.
+requestFullScreen(elem);
+var msg = new SpeechSynthesisUtterance("press escape or f11 to close out");
+window.speechSynthesis.speak(msg);
+              }
+
+
+              else if (command.toLowerCase() === 'new tab'){
+                   window.open('https://www.google.com/', '_blank');
+               }
+
+               else if (command.toLowerCase() === 'what time is it'){
+              var msg = new SpeechSynthesisUtterance(new Date().getHours());
+                 window.speechSynthesis.speak(msg);
+                 }
+
+
+               else if (command.toLowerCase() === 'calendar'){
+                   window.open('https://calendar.google.com/calendar/r?pli=1&t=AKUaPmZzhGJULD2P7UgTY9ucAHFt0oOuneC2ndrhDzAmW1JIseu5Ogd4t2HewMJY4Rdz-MUQj605cJxB-0s0vKfQXj8lYz6cuA%3D%3D', '_blank');
+                }
+
+                else if (command.toLowerCase() === 'what are my plans'){
+
+                 }
+
+
+
+                 else if (command.toLowerCase() === 'order pizza hut'){
+                       var msg = new SpeechSynthesisUtterance("ordering some nice yummy pizza");
+                       window.speechSynthesis.speak(msg);
+                     window.open('https://www.pizzahut.com/', '_blank');
+                  }
+
+
+
+                  else if (command.toLowerCase() === 'order an uber'){
+                        var msg = new SpeechSynthesisUtterance("so you want me to summon a stranger from the internet so that you can get in their car");
+                        window.speechSynthesis.speak(msg);
+                      window.open('https://www.uber.com/', '_blank');
+                   }
+
+
+                   else if (command.toLowerCase() === 'how was the universe created'){
+                        var msg = new SpeechSynthesisUtterance("most scientist say the universe began some 13 million point something years ago in an event called the big bang. Steven Winberg, an atheist and nobel prize winner, saied In the beging there was an explosion, and 98% of the matter there is or will ever be was produced, we had the univers. However in 1920 george lemaor, a theist, said the entire universe jumping into existance in a trillionth of a trillionth of a second out of nothing in an intense flash of light, is how he would expect the universe to respond if God udered the words let there be light in genises 1 1");
+                        window.speechSynthesis.speak(msg);
+                   }
+
+
+
+
+                   else if (command.toLowerCase() === 'play netflix'){
+                       var msg = new SpeechSynthesisUtterance("playing flash");
+                       window.speechSynthesis.speak(msg);
+                       window.open('https://www.netflix.com/watch/80057443?trackId=14277283&tctx=0%2C0%2C33567407-b04b-4e18-b38e-27ced02a7b0f-1596043%2C%2C', '_blank');
+
+                  }
+
+
+                  else if (command.toLowerCase() === 'play ant-man and wasp'){
+                      var msg = new SpeechSynthesisUtterance("playing ant man and wasp");
+                      window.speechSynthesis.speak(msg);
+                      window.open('https://www.netflix.com/watch/80220813?trackId=200254290&tctx=0%2C0%2C4647bfee-0c0e-44f2-8340-60f0397657a4-33800574%2Cf9a0a75f-f78e-46f3-bcd9-997a633df5f6_5344468X6XX1553039261155%2Cf9a0a75f-f78e-46f3-bcd9-997a633df5f6_ROOT', '_blank');
+
+                  }
+
+
+
+                  else if (command.toLowerCase() === 'play bedtime stories'){
+                      var msg = new SpeechSynthesisUtterance("playing bedtime stories");
+                      window.speechSynthesis.speak(msg);
+                      window.open('https://www.netflix.com/watch/70100381?trackId=200254290&tctx=0%2C0%2C921cd14d-2c2c-473e-85c8-e3a7ca589243-9835528%2Cf9a0a75f-f78e-46f3-bcd9-997a633df5f6_5344468X6XX1553039261155%2Cf9a0a75f-f78e-46f3-bcd9-997a633df5f6_ROOT', '_blank');
+
+                  }
+
+
+                  else if (command.toLowerCase() === 'play coding music'){
+                      var msg = new SpeechSynthesisUtterance("playing quote unquote coding music");
+                      window.speechSynthesis.speak(msg);
+                      window.open('https://www.youtube.com/watch?v=8XJ6r4U171I', '_blank');
+
+                  }
+
+
+                  else if (command.toLowerCase() === 'ask me a riddle'){
+                      var msg = new SpeechSynthesisUtterance("what can travel around the world, but while staying in a corner.");
+                      window.speechSynthesis.speak(msg);
+                      window.open('https://www.riddles.com/best-riddles', '_blank');
+                      var msg = new SpeechSynthesisUtterance(",,,,...,, A stamp, ha ha ha");
+                      window.speechSynthesis.speak(msg);
+                  }
+
+
+                  else if (command.toLowerCase() === 'unsolveable problems'){
+                      var msg = new SpeechSynthesisUtterance("giving you unsoveable problems");
+                      window.speechSynthesis.speak(msg);
+                      window.open('https://en.wikipedia.org/wiki/Lists_of_unsolved_problems', '_blank');
+                  }
+
+                  else if (command.toLowerCase() === 'files'){
+
+
+                  }
+
+
+                  else if (command.toLowerCase() === 'that is a made-up word'){
+                      var msg = new SpeechSynthesisUtterance("all words are made up");
+                      window.speechSynthesis.speak(msg);
+                  }
+
+
+                  else if (command.toLowerCase() === 'play classical music'){
+                      var msg = new SpeechSynthesisUtterance("playing beethoven");
+                      window.speechSynthesis.speak(msg);
+                      var x = document.getElementById("piano");
+                      x.play();
+
+                      var x = document.getElementById("piano2");
+                      x.pause();
+                      var x = document.getElementById("mozart");
+                      x.pause();
+                  }
+
+
+                  else if (command.toLowerCase() === 'next song'){
+                      var x = document.getElementById("piano2");
+                      x.play();
+
+                      var x = document.getElementById("piano");
+                      x.pause();
+                      var x = document.getElementById("mozart");
+                      x.pause();
+                  }
+
+
+                  else if (command.toLowerCase() === 'play mozart'){
+                      var x = document.getElementById("mozart");
+                      x.play();
+
+                      var x = document.getElementById("piano");
+                      x.pause();
+                      var x = document.getElementById("piano2");
+                      x.pause();
+                  }
+
+
+                  else if (command.toLowerCase() === 'pause music'){
+                      var x = document.getElementById("piano");
+                      x.pause();
+                      var x = document.getElementById("piano2");
+                      x.pause();
+                      var x = document.getElementById("mozart");
+                      x.pause();
+                  }
+
+
+                  else if (command.toLowerCase() === 'play more classical music'){
+                    var msg = new SpeechSynthesisUtterance("directing you to a composition of great songs");
+                    window.speechSynthesis.speak(msg);
+                      window.open('https://www.youtube.com/watch?v=jgpJVI3tDbY', '_blank');
+
+                  }
+
+
+
+                  else if (command.toLowerCase() === 'shut down'){
+                      var msg = new SpeechSynthesisUtterance("shut ing down");
+                      window.speechSynthesis.speak(msg);
+                     self.close()
+                  }
+
+
+                  else if (command.toLowerCase() === 'wi-fi status'){
+                    if (navigator.online = true) {
+                      var msg = new SpeechSynthesisUtterance("online and ready");
+                      window.speechSynthesis.speak(msg);
+                    }
+                  }
+
+
+
+
+                  else if (command.toLowerCase() === 'open google docs'){
+                    var msg = new SpeechSynthesisUtterance("directing you to google docs");
+                    window.speechSynthesis.speak(msg);
+                      window.open('https://docs.google.com/document/u/0/', '_blank');
+
+                  }
+
+
+
+                  else if (command.toLowerCase() === 'open google drive'){
+                    var msg = new SpeechSynthesisUtterance("directing you to google drive");
+                    window.speechSynthesis.speak(msg);
+                      window.open('https://drive.google.com/drive/my-drive', '_blank');
+
+                  }
+
+
+                  else if (command.toLowerCase() === 'home screen'){
+                    var msg = new SpeechSynthesisUtterance("directing you to your home screen");
+                    window.speechSynthesis.speak(msg);
+                      window.open('homescreen1.html');
+
+                  }
+
+
+                  else if (command.toLowerCase() === 'school calendar'){
+                    var msg = new SpeechSynthesisUtterance("directing you to your school calander");
+                    window.speechSynthesis.speak(msg);
+                      window.open('https://goodpasture.myschoolapp.com/app/student#calendar');
+
+                  }
+
+
+
+                  else if (command.toLowerCase() === 'editor'){
+                    var msg = new SpeechSynthesisUtterance("directing you to your custom jarvis workspace");
+                    window.speechSynthesis.speak(msg);
+                      window.open('typing2.html');
+
+                  }
+
+                  else if (command.toLowerCase() === 'to do list'){
+                      window.open('todolist.html');
+
+                  }
+
+
+
+};
+recognition.onspeechend = function() {
+  recognition.stop();
+};
+recognition.onerror = function(event) {
+  message.textContent = 'Error occurred in recognition: ' + event.error;
+}
+document.querySelector('#btnGiveCommand').addEventListener('click', function(){
+  recognition.start();
+});
+
+
+  </script>
+
+  <style>
+
+
+  body {
+  	padding:0;
+  	margin:0;
+    overflow: hidden;
+    background-size: 100% auto;
+    background: url(background1.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  }
+
+  .bg {
+  	position: absolute;
+  	width:100%;
+  	height:100%;
+  	background-size: cover;
+  	background-position: center;
+  	background-color: #333333;
+  	-webkit-filter: brightness(0.85);
+  	filter: brightness(0.85);
+  }
+
+  .content {
+  	width:100%;
+  	height:100%;
+  	top:0;
+  	right:0;
+  	bottom:0;
+  	left:0;
+  	position:absolute;
+  }
+
+  .circle {
+  	position: absolute;
+  	top: 50%;
+  	left: 50%;
+  	border-radius: 50%;
+  	background: transparent;
+  	z-index: 10;
+  }
+
+  span.dot {
+  	position: absolute;
+  	width: 16px;
+  	height: 100%;
+  	top: 0;
+  	left: 50%;
+  	margin-left: -8px;
+  }
+
+  span.dot:after {
+  	content: '';
+  	position: absolute;
+  	left: 0;
+  	top: 0;
+  	display: block;
+  	width: 16px;
+  	height: 16px;
+  	background-color: #ffffff;
+  	border-radius: 50%;
+  }
+
+  /* Animation */
+
+  .circle {
+  	width: 240px;
+  	height: 240px;
+  	margin: -120px 0 0 -120px;
+  	-webkit-animation: animatedEight 30s linear infinite;
+  	animation: animatedEight 30s linear infinite;
+  }
+
+  	@-webkit-keyframes animatedEight {
+  		from { -webkit-transform: rotate(-45deg); }
+  		to { -webkit-transform: rotate(-405deg); }
+  	}
+  	@keyframes animatedEight {
+  		from { transform: rotate(-45deg); }
+  		to { transform: rotate(-405deg); }
+  	}
+
+  span.dot.no1 {
+  	-webkit-animation: animatedDotOne 15s ease infinite;
+  	animation: animatedDotOne 15s ease infinite;
+  }
+
+  	@-webkit-keyframes animatedDotOne {
+  		0%, 58%, 100% { -webkit-transform: translate(0,0); }
+  		8%, 50% { -webkit-transform: translate(0,224px); }
+  	}
+  	@keyframes animatedDotOne {
+  		0%, 58%, 100% { transform: translate(0,0); }
+  		8%, 50% { transform: translate(0,224px); }
+  	}
+
+  span.dot.no2 {
+  	-webkit-animation: animatedDotTwo 15s ease infinite;
+  	animation: animatedDotTwo 15s ease infinite;
+  }
+
+  	@-webkit-keyframes animatedDotTwo {
+  		0%, 2%, 60%, 100% { -webkit-transform: rotate(24deg) translate(0,0); }
+  		10%, 52% { -webkit-transform: rotate(24deg) translate(0,224px); }
+  	}
+  	@keyframes animatedDotTwo {
+  		0%, 2%, 60%, 100% { transform: rotate(24deg) translate(0,0); }
+  		10%, 52% { transform: rotate(24deg) translate(0,224px); }
+  	}
+
+  span.dot.no3 {
+  	-webkit-animation: animatedDotThree 15s ease infinite;
+  	animation: animatedDotThree 15s ease infinite;
+  }
+
+  	@-webkit-keyframes animatedDotThree {
+  		0%, 4%, 62%, 100% { -webkit-transform: rotate(48deg) translate(0,0); }
+  		12%, 54% { -webkit-transform: rotate(48deg) translate(0,224px); }
+  	}
+  	@keyframes animatedDotThree {
+  		0%, 4%, 62%, 100% { transform: rotate(48deg) translate(0,0); }
+  		12%, 54% { transform: rotate(48deg) translate(0,224px); }
+  	}
+
+  span.dot.no4 {
+  	-webkit-animation: animatedDotFour 15s ease infinite;
+  	animation: animatedDotFour 15s ease infinite;
+  }
+
+  	@-webkit-keyframes animatedDotFour {
+  		0%, 6%, 64%, 100% { -webkit-transform: rotate(72deg) translate(0,0); }
+  		14%, 56% { -webkit-transform: rotate(72deg) translate(0,224px); }
+  	}
+  	@keyframes animatedDotFour {
+  		0%, 6%, 64%, 100% { transform: rotate(72deg) translate(0,0); }
+  		14%, 56% { transform: rotate(72deg) translate(0,224px); }
+  	}
+
+  span.dot.no5 {
+  	-webkit-animation: animatedDotFive 15s ease infinite;
+  	animation: animatedDotFive 15s ease infinite;
+  }
+
+  	@-webkit-keyframes animatedDotFive {
+  		0%, 8%, 66%, 100% { -webkit-transform: rotate(96deg) translate(0,0); }
+  		16%, 58% { -webkit-transform: rotate(96deg) translate(0,224px); }
+  	}
+  	@keyframes animatedDotFive {
+  		0%, 8%, 66%, 100% { transform: rotate(96deg) translate(0,0); }
+  		16%, 58% { transform: rotate(96deg) translate(0,224px); }
+  	}
+
+  span.dot.no6 {
+  	-webkit-animation: animatedDotSix 15s ease infinite;
+  	animation: animatedDotSix 15s ease infinite;
+  }
+
+  	@-webkit-keyframes animatedDotSix {
+  		0%, 10%, 68%, 100% { -webkit-transform: rotate(120deg) translate(0,0); }
+  		18%, 60% { -webkit-transform: rotate(120deg) translate(0,224px); }
+  	}
+  	@keyframes animatedDotSix {
+  		0%, 10%, 68%, 100% { transform: rotate(120deg) translate(0,0); }
+  		18%, 60% { transform: rotate(120deg) translate(0,224px); }
+  	}
+
+  span.dot.no7 {
+  	-webkit-animation: animatedDotSeven 15s ease infinite;
+  	animation: animatedDotSeven 15s ease infinite;
+  }
+
+  	@-webkit-keyframes animatedDotSeven {
+  		0%, 12%, 70%, 100% { -webkit-transform: rotate(144deg) translate(0,0); }
+  		20%, 62% { -webkit-transform: rotate(144deg) translate(0,224px); }
+  	}
+  	@keyframes animatedDotSeven {
+  		0%, 12%, 70%, 100% { transform: rotate(144deg) translate(0,0); }
+  		20%, 62% { transform: rotate(144deg) translate(0,224px); }
+  	}
+
+  span.dot.no8 {
+  	-webkit-animation: animatedDotEight 15s ease infinite;
+  	animation: animatedDotEight 15s ease infinite;
+  }
+
+  	@-webkit-keyframes animatedDotEight {
+  		0%, 14%, 72%, 100% { -webkit-transform: rotate(168deg) translate(0,0); }
+  		22%, 64% { -webkit-transform: rotate(168deg) translate(0,224px); }
+  	}
+  	@keyframes animatedDotEight {
+  		0%, 14%, 72%, 100% { transform: rotate(168deg) translate(0,0); }
+  		22%, 64% { transform: rotate(168deg) translate(0,224px); }
+  	}
+
+  span.dot.no9 {
+  	-webkit-animation: animatedDotNine 15s ease infinite;
+  	animation: animatedDotNine 15s ease infinite;
+  }
+
+  	@-webkit-keyframes animatedDotNine {
+  		0%, 16%, 74%, 100% { -webkit-transform: rotate(192deg) translate(0,0); }
+  		24%, 66% { -webkit-transform: rotate(192deg) translate(0,224px); }
+  	}
+  	@keyframes animatedDotNine {
+  		0%, 16%, 74%, 100% { transform: rotate(192deg) translate(0,0); }
+  		24%, 66% { transform: rotate(192deg) translate(0,224px); }
+  	}
+
+  span.dot.no10 {
+  	-webkit-animation: animatedDotTen 15s ease infinite;
+  	animation: animatedDotTen 15s ease infinite;
+  }
+
+  	@-webkit-keyframes animatedDotTen {
+  		0%, 18%, 76%, 100% { -webkit-transform: rotate(216deg) translate(0,0); }
+  		26%, 68% { -webkit-transform: rotate(216deg) translate(0,224px); }
+  	}
+  	@keyframes animatedDotTen {
+  		0%, 18%, 76%, 100% { transform: rotate(216deg) translate(0,0); }
+  		26%, 68% { transform: rotate(216deg) translate(0,224px); }
+  	}
+
+  span.dot.no11 {
+  	-webkit-animation: animatedDotEleven 15s ease infinite;
+  	animation: animatedDotEleven 15s ease infinite;
+  }
+
+  	@-webkit-keyframes animatedDotEleven {
+  		0%, 20%, 78%, 100% { -webkit-transform: rotate(240deg) translate(0,0); }
+  		28%, 70% { -webkit-transform: rotate(240deg) translate(0,224px); }
+  	}
+  	@keyframes animatedDotEleven {
+  		0%, 20%, 78%, 100% { transform: rotate(240deg) translate(0,0); }
+  		28%, 70% { transform: rotate(240deg) translate(0,224px); }
+  	}
+
+  span.dot.no12 {
+  	-webkit-animation: animatedDotTwelve 15s ease infinite;
+  	animation: animatedDotTwelve 15s ease infinite;
+  }
+
+  	@-webkit-keyframes animatedDotTwelve {
+  		0%, 22%, 80%, 100% { -webkit-transform: rotate(264deg) translate(0,0); }
+  		30%, 72% { -webkit-transform: rotate(264deg) translate(0,224px); }
+  	}
+  	@keyframes animatedDotTwelve {
+  		0%, 22%, 80%, 100% { transform: rotate(264deg) translate(0,0); }
+  		30%, 72% { transform: rotate(264deg) translate(0,224px); }
+  	}
+
+  span.dot.no13 {
+  	-webkit-animation: animatedDotThirteen 15s ease infinite;
+  	animation: animatedDotThirteen 15s ease infinite;
+  }
+
+  	@-webkit-keyframes animatedDotThirteen {
+  		0%, 24%, 82%, 100% { -webkit-transform: rotate(288deg) translate(0,0); }
+  		32%, 74% { -webkit-transform: rotate(288deg) translate(0,224px); }
+  	}
+  	@keyframes animatedDotThirteen {
+  		0%, 24%, 82%, 100% { transform: rotate(288deg) translate(0,0); }
+  		32%, 74% { transform: rotate(288deg) translate(0,224px); }
+  	}
+
+  span.dot.no14 {
+  	-webkit-animation: animatedDotFourteen 15s ease infinite;
+  	animation: animatedDotFourteen 15s ease infinite;
+  }
+
+  	@-webkit-keyframes animatedDotFourteen {
+  		0%, 26%, 84%, 100% { -webkit-transform: rotate(312deg) translate(0,0); }
+  		34%, 76% { -webkit-transform: rotate(312deg) translate(0,224px); }
+  	}
+  	@keyframes animatedDotFourteen {
+  		0%, 26%, 84%, 100% { transform: rotate(312deg) translate(0,0); }
+  		34%, 76% { transform: rotate(312deg) translate(0,224px); }
+  	}
+
+  span.dot.no15 {
+  	-webkit-animation: animatedDotFifteen 15s ease infinite;
+  	animation: animatedDotFifteen 15s ease infinite;
+  }
+
+  	@-webkit-keyframes animatedDotFifteen {
+  		0%, 28%, 86%, 100% { -webkit-transform: rotate(336deg) translate(0,0); }
+  		36%, 78% { -webkit-transform: rotate(336deg) translate(0,224px); }
+  	}
+  	@keyframes animatedDotFifteen {
+  		0%, 28%, 86%, 100% { transform: rotate(336deg) translate(0,0); }
+  		36%, 78% { transform: rotate(336deg) translate(0,224px); }
+  	}
+
+
+
+
+
+  </style>
+
+
+
+</body>
+
+</html>
